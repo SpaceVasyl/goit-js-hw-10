@@ -5,10 +5,11 @@ const output = document.querySelector(".country-info");
 
 textInput.addEventListener("input", printOutput);
 function printOutput(event) {
-    output.textContent = event.currentTarget.value;
+     const country = fetch('https://restcountries.com/v2/all?fields=name,capital,currencies').then(data=>{
+   console.log(data); 
+})
 }
 
 
-// const country = fetch('https://restcountries.com/v2/all?fields=name,capital,currencies').then(data=>{
-//    console.log(country); 
-// })
+
+// output.textContent = event.currentTarget.value;
