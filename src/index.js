@@ -5,7 +5,8 @@ const output = document.querySelector(".country-info");
 
 textInput.addEventListener("input", printOutput);
 function printOutput(event) {
-fetch('https://restcountries.com/v3.1/name/{name}').then(response=>{
+fetch('https://restcountries.com/v3.1/name/{name}')
+.then(response=>{
    return response.json(); 
 }).then(country => {console.log(country);
 }).catch(error => {
