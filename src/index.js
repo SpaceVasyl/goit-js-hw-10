@@ -20,6 +20,7 @@ function fetchCountries(event) {
 
 function printOutput (response){
 console.log(response.json());
+output.textContent = response.json()
 }
 
 
