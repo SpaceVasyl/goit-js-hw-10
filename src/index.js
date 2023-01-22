@@ -8,11 +8,10 @@ function fetchCountries(event) {
     // console.log(event.target.value);
     fetch(`https://restcountries.com/v2/name/${event.target.value}?fields=name,capital,population,flags,languages`)
     .then((response) => {
-        console.log(response.json());
-    //   return printOutput(response.json());
+      return printOutput(response);
     })
     .then((country) => {
-        console.log(country);
+        // console.log(country);
       })
     .catch((error) => {
       console.log(error);
