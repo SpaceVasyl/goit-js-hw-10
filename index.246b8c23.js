@@ -1,0 +1,2 @@
+document.querySelector("#search-box").addEventListener("input",((e,t=250)=>{let n;return(...o)=>{n&&clearTimeout(n),n=setTimeout((()=>{n=null,e(...o)}),t)}})((function(e){fetch(`https://restcountries.com/v2/name/${e.target.value}?fields=name,capital,population,flags,languages`).then((e=>e.json())).then((e=>function(e){e.length>10&&alert("Too many matches found. Please enter a more specific name.")}(e)))}),300));document.querySelector(".country-info");
+//# sourceMappingURL=index.246b8c23.js.map
