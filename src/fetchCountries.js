@@ -3,11 +3,11 @@ import Notiflix from 'notiflix';
 const DEBOUNCE_DELAY = 500;
 const textInput = document.querySelector('#search-box');
 const output = document.querySelector(".country-list");
-
+const countryInfo = document.querySelector(".country-info");
 export function fetchCountries(event) {
     fetch(`https://restcountries.com/v2/name/${event.target.value}?fields=name,capital,population,flags,languages`)
     .then((res) => res.json())
-    .then((data) => data.length > 10 ? tooMuchCountries(data) : data.length > 1 ? listOFCountries(data): displayCountrie(data))
+    .then((data) => data.length > 10 ? tooMuchCountries(data) : data.length > 1 ? listOFCountries(data): displayCountry(data))
 }
 textInput.addEventListener("input", debounce(fetchCountries, DEBOUNCE_DELAY));
 
@@ -22,7 +22,6 @@ function listOFCountries(data){
         const lastItem = document.createElement("li");
         lastItem.style.listStyle = "none";
         lastItem.style.display = "flex";
-        lastItem.style.justifycontent = "space-between";
         lastItem.style.gap = "7px";
         lastItem.style.height = "20px";
         lastItem.innerHTML = `<img src="${data[i].flags.svg}" height='18'style="margin: 1px 0px;padding-top:6px;"><p style="margin: 0px; padding-bottom:1px;">${data[i].name}</p>`;
@@ -30,6 +29,8 @@ function listOFCountries(data){
     }
   }
 
-function displayCountrie(data) {
+function displayCountry(data) {
     console.log(data);
+    output.remove();
+    countryInfo.innerHTML = `<h2 style="font-size:40px"><img src="${data[0].flags.png}" height='18'style="margin-bottom: 5px;margin-right: 5px;">${data[0].name}</h2>`;
 }
