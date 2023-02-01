@@ -18,7 +18,12 @@ function tooMuchCountries(data){
 function listOFCountries(data){
     const nameCountry = null;
     for(let i = 0; i<data.length; i++){
-        console.log(data[i].name);
+        console.log(data[i]);
+        const lastItem = document.createElement("li");
+        lastItem.style.listStyle = "none";
+        lastItem.style.display = "flex"
+        lastItem.innerHTML = `<img src="${data[i].flags.svg}" width='100' height='50'><p>${data[i].name}</p>`;
+        output.append(lastItem);
     }
   }
 
