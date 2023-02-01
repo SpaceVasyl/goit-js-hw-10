@@ -21,8 +21,10 @@ function listOFCountries(data){
         console.log(data[i]);
         const lastItem = document.createElement("li");
         lastItem.style.listStyle = "none";
-        lastItem.style.display = "flex"
-        lastItem.innerHTML = `<img src="${data[i].flags.svg}" width='100' height='50'><p>${data[i].name}</p>`;
+        lastItem.style.display = "flex";
+        lastItem.style.gap = "5px";
+        lastItem.style.height = "fit-content";
+        lastItem.innerHTML = `<img src="${data[i].flags.svg}" width='48' height='24'><p style={height='15'}>${data[i].name}</p>`;
         output.append(lastItem);
     }
   }
