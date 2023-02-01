@@ -22,9 +22,10 @@ function listOFCountries(data){
         const lastItem = document.createElement("li");
         lastItem.style.listStyle = "none";
         lastItem.style.display = "flex";
-        lastItem.style.gap = "5px";
-        lastItem.style.height = "fit-content";
-        lastItem.innerHTML = `<img src="${data[i].flags.svg}" width='48' height='24'><p style={height='15'}>${data[i].name}</p>`;
+        lastItem.style.justifycontent = "space-between";
+        lastItem.style.gap = "7px";
+        lastItem.style.height = "20px";
+        lastItem.innerHTML = `<img src="${data[i].flags.svg}" height='18'style="margin: 1px 0px;padding-top:6px;"><p style="margin: 0px; padding-bottom:1px;">${data[i].name}</p>`;
         output.append(lastItem);
     }
   }
