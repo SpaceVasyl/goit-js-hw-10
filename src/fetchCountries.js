@@ -5,22 +5,24 @@ const textInput = document.querySelector('#search-box');
 const output = document.querySelector(".country-list");
 const countryInfo = document.querySelector(".country-info");
 export function fetchCountries(event) {
-    fetch(`https://restcountries.com/v2/name/${event.target.value}?fields=name,capital,population,flags,languages`)
-    .then((res) => res.json())
-    .then((data) => data.length > 10 ? tooMuchCountries(data) : data.length > 1 ? listOFCountries(data): displayCountry(data))
-    .catch((error) => Notiflix.Notify.failure("Oops, there is no country with that name"))
+  fetch(`https://restcountries.com/v2/name/${event.target.value}?fields=name,capital,population,flags,languages`)
+  .then((res) => res.json())
+  .then((data) => data.length > 10 ? tooMuchCountries(data) : data.length > 1 ? listOFCountries(data): displayCountry({name,capital,population,flags,languages}))
+  .catch((error) => Notiflix.Notify.failure("Oops, there is no country with that name"))
 }
 textInput.addEventListener("input", debounce(fetchCountries, DEBOUNCE_DELAY));
 
-function tooMuchCountries(data){
+  function tooMuchCountries(data){
   output.remove();
   countryInfo.remove();
   Notiflix.Notify.info("Too many matches found. Please enter a more specific name.");
   };
 
-function listOFCountries(data){
+  function listOFCountries(data){
   countryInfo.remove();
+  output.remove();
   const nameCountry = null;
+  
   for(let i = 0; i<data.length; i++){
   console.log(data[i]);
   const lastItem = document.createElement("li");
@@ -33,12 +35,13 @@ function listOFCountries(data){
   }
   }
 
-function displayCountry(data) {
-    console.log(data);
-    output.remove();
-    countryInfo.innerHTML = `<h2 style="font-size:40px"><img src="${data[0].flags.svg}" height='18'style="margin-bottom: 5px;margin-right: 5px;">${data[0].name}</h2>
-    <ul style="list-style:none ;">
-    <li>Capital:${data[0].capital}</li>
-    <li>Population:${data[0].population}</li>
-    <li>Languages:${data[0].languages[0].name}</li>
-    </ul>`}
+function displayCountry({name,capital,population,flags,languages}) {
+  console.log({name,capital,population,flags,languages});
+  output.remove();
+  countryInfo.remove();
+  countryInfo.innerHTML = `<h2 style="font-size:40px"><img src="${flags.svg}" height='18'style="margin-bottom: 5px;margin-right: 5px;">${name}</h2>
+  <ul style="list-style:none ;">
+  <li>Capital:${capital}</li>
+  <li>Population:${population}</li>
+  <li>Languages:${[languages.name]}</li>
+  </ul>`}
