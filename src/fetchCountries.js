@@ -32,5 +32,10 @@ function listOFCountries(data){
 function displayCountry(data) {
     console.log(data);
     output.remove();
-    countryInfo.innerHTML = `<h2 style="font-size:40px"><img src="${data[0].flags.png}" height='18'style="margin-bottom: 5px;margin-right: 5px;">${data[0].name}</h2>`;
+    countryInfo.innerHTML = `<h2 style="font-size:40px"><img src="${data[0].flags.png}" height='18'style="margin-bottom: 5px;margin-right: 5px;">${data[0].name}</h2>
+    <ul style="list-style:none ;">
+    <li>Capital:${data[0].capital}</li>
+    <li>Population:${data[0].population}</li>
+    <li>Languages:${data[0].languages[0, 1, 2,3..toExponential].name}</li>
+    </ul>`;
 }
