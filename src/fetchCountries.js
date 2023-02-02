@@ -8,15 +8,17 @@ export function fetchCountries(event) {
     fetch(`https://restcountries.com/v2/name/${event.target.value}?fields=name,capital,population,flags,languages`)
     .then((res) => res.json())
     .then((data) => data.length > 10 ? tooMuchCountries(data) : data.length > 1 ? listOFCountries(data): displayCountry(data))
+    .catch((error) => Notiflix.Notify.failure("Oops, there is no country with that name"))
 }
 textInput.addEventListener("input", debounce(fetchCountries, DEBOUNCE_DELAY));
 
 function tooMuchCountries(data){
-    Notiflix.Notify.info("Too many matches found. Please enter a more specific name.");
+  output.remove();
+  countryInfo.remove();
+  Notiflix.Notify.info("Too many matches found. Please enter a more specific name.");
   };
 
 function listOFCountries(data){
-  output.remove();
   countryInfo.remove();
   const nameCountry = null;
   for(let i = 0; i<data.length; i++){
@@ -34,10 +36,9 @@ function listOFCountries(data){
 function displayCountry(data) {
     console.log(data);
     output.remove();
-    countryInfo.remove();
-    countryInfo.innerHTML = `<h2 style="font-size:40px"><img src="${data[0].flags.png}" height='18'style="margin-bottom: 5px;margin-right: 5px;">${data[0].name}</h2>
+    countryInfo.innerHTML = `<h2 style="font-size:40px"><img src="${data[0].flags.svg}" height='18'style="margin-bottom: 5px;margin-right: 5px;">${data[0].name}</h2>
     <ul style="list-style:none ;">
-    <li>Capital:${data[0].capital}</li>;
-    <li>Population:${data[0].population}</li>;
-    <li>Languages:${data[0].languages[0,1].name}</li>;
+    <li>Capital:${data[0].capital}</li>
+    <li>Population:${data[0].population}</li>
+    <li>Languages:${data[0].languages[0].name}</li>
     </ul>`}
