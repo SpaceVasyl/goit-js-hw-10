@@ -25,7 +25,7 @@ else if (c.length >1 && c.length<10){
 output.innerHTML = c.map((a)=>{
 const  {name, capital, population, flag, languages} = a
 return `
-<li>
+<li style="list-style: none;">
 <img src="${flag}" width=100 height=70></img>
 <p>${name}</p>
 </li>
@@ -36,14 +36,18 @@ else if (c.length === 1){
 output.innerHTML = c.map((a)=>{
 const  {name, capital, population, flag, languages} = a
 return `
-
 <img src="${flag}" width=100 height=70></img>
 <h2>${name}</h2>
-<p>${capital}</p>
+<ul style="list-style: none;>
+<li><p>Capital: ${capital}</p></li>
+<li><p>Population: ${population}</p></li>
+<li><p>Languages: ${languages}</p></li>
+</ul>
 `
 })
 }
-else if (c){alert("Oops, there is no country with that name")}
+else if (c){
+    Notiflix.Notify.failure("Oops, there is no country with that name")}
 }
 
 
