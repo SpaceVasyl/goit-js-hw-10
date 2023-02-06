@@ -23,8 +23,8 @@ if (c.length >10) {
 }
 else if (c.length >1 && c.length<10){
 output.innerHTML = c.map((a)=>{
-const  {name, capital, population, flag, languages} = a
-return `<li style="list-style: none; display: flex"><img src="${flag}" width=20 height=12></img><p style="margin-top: 0;">${name}</p></li>`
+const  {name, flag} = a
+return `<li style="list-style: none; display: flex"; height: 20px;><img src="${flag}" style="margin-top: 2px;" width=32 height=21></img><p style="margin: 0; margin-left: 5px"> ${name}</p></li>`
 })
 }
 else if (c.length === 1){
