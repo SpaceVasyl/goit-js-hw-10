@@ -37,16 +37,11 @@ else if (c.length === 1){
 output.innerHTML = "";
 countryInfo.innerHTML = c.map((a)=>{
 const  {name, capital, population, flag, languages } = a;
-let lang = [];
-for(let i = 0; i >= languages.length; i++){
-    lang.push(languages[0].name);
-}
-console.log(lang);
 return `
-<h1><img src="${flag}" width=60 height=35 alt="flag"></img>${name}</h1>
+<h2><img src="${flag}" width=37 height=19 alt="flag"></img>${name}</h2>
 <p>Capital: ${capital}</p>
 <p>Population: ${population}</p>
-<p>Languages: </p>
+<p>Languages: ${languages.map(language => language.name).join(', ')}</p>
 `
 })
 }
