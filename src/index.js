@@ -31,13 +31,15 @@ return `<li style="list-style: none; display: flex"; height: 20px;><img src="${f
 else if (c.length === 1){
 output.innerHTML = "";
 countryInfo.innerHTML = c.map((a)=>{
-const  {name, capital, population, flag, languages} = a;
+const  {name, capital, population, flag, languages } = a;
+console.log(languages[0].name);
+
 
 return `
 <h1><img src="${flag}" width=60 height=35 alt="flag"></img>${name}</h1>
 <p>Capital: ${capital}</p>
 <p>Population: ${population}</p>
-<p>Languages: ${languages.nativeName}</p>
+<p>Languages: </p>
 `
 })
 }
