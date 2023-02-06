@@ -22,22 +22,22 @@ if (c.length >10) {
     Notiflix.Notify.info("Too many matches found. Please enter a more specific name.")
 }
 else if (c.length >1 && c.length<10){
+countryInfo.innerHTML = "";
 output.innerHTML = c.map((a)=>{
 const  {name, flag} = a
-return `<li style="list-style: none; display: flex"; height: 20px;><img src="${flag}" style="margin-top: 2px;" width=32 height=21></img><p style="margin: 0; margin-left: 5px"> ${name}</p></li>`
+return `<li style="list-style: none; display: flex"; height: 20px;><img src="${flag}" style="margin-top: 2px;" width=32 height=21 alt="flag"></img><p style="margin: 0; margin-left: 5px"> ${name}</p></li>`
 })
 }
 else if (c.length === 1){
-output.innerHTML = c.map((a)=>{
-const  {name, capital, population, flag, languages} = a
+output.innerHTML = "";
+countryInfo.innerHTML = c.map((a)=>{
+const  {name, capital, population, flag, languages} = a;
+
 return `
-<img src="${flag}" width=100 height=70></img>
-<h2>${name}</h2>
-<ul style="list-style: none;>
-<li><p>Capital: ${capital}</p></li>
-<li><p>Population: ${population}</p></li>
-<li><p>Languages: ${languages}</p></li>
-</ul>
+<h1><img src="${flag}" width=60 height=35 alt="flag"></img>${name}</h1>
+<p>Capital: ${capital}</p>
+<p>Population: ${population}</p>
+<p>Languages: ${languages.nativeName}</p>
 `
 })
 }
