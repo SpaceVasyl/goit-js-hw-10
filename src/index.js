@@ -24,12 +24,7 @@ if (c.length >10) {
 else if (c.length >1 && c.length<10){
 output.innerHTML = c.map((a)=>{
 const  {name, capital, population, flag, languages} = a
-return `
-<li style="list-style: none;">
-<img src="${flag}" width=100 height=70></img>
-<p>${name}</p>
-</li>
-`
+return `<li style="list-style: none; display: flex"><img src="${flag}" width=20 height=12></img><p style="margin-top: 0;">${name}</p></li>`
 })
 }
 else if (c.length === 1){
