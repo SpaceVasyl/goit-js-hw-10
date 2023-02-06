@@ -25,7 +25,12 @@ else if (c.length >1 && c.length<10){
 countryInfo.innerHTML = "";
 output.innerHTML = c.map((a)=>{
 const  {name, flag} = a
-return `<li style="list-style: none; display: flex"; height: 20px;><img src="${flag}" style="margin-top: 2px;" width=32 height=21 alt="flag"></img><p style="margin: 0; margin-left: 5px"> ${name}</p></li>`
+return `
+<li style="list-style: none; display: flex"; height: 20px;>
+<img src="${flag}" style="margin-top: 2px;" width=32 height=21 alt="flag"></img>
+<p style="margin: 0; margin-left: 5px"> ${name}</p>
+</li>
+`
 })
 }
 else if (c.length === 1){
