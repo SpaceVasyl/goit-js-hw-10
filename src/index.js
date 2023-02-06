@@ -31,15 +31,17 @@ return `
 <p style="margin: 0; margin-left: 5px"> ${name}</p>
 </li>
 `
-})
+}).join('')
 }
 else if (c.length === 1){
 output.innerHTML = "";
 countryInfo.innerHTML = c.map((a)=>{
 const  {name, capital, population, flag, languages } = a;
-console.log(languages[0].name);
-
-
+let lang = [];
+for(let i = 0; i >= languages.length; i++){
+    lang.push(languages[0].name);
+}
+console.log(lang);
 return `
 <h1><img src="${flag}" width=60 height=35 alt="flag"></img>${name}</h1>
 <p>Capital: ${capital}</p>
